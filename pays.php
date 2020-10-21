@@ -6,6 +6,9 @@ $pdoStat = $connect->query("SELECT * FROM pays");
 $pays = $pdoStat->fetchAll();
 
 if (isset($_GET['pays'])){
+
+
+
     $capital = $_GET['pays'] ;
     if($capital == 'Paris'){
         $result = "$capital est la capital de la France ";
@@ -17,6 +20,7 @@ if (isset($_GET['pays'])){
         $result = "$capital est la capital de l'Angleterre";
     }
 }
+//$var->bindParam();
 ?>
 
 <!DOCTYPE html>
@@ -32,14 +36,14 @@ if (isset($_GET['pays'])){
             <?php if (isset($result)): ?>
 
             <h1><?= $result?></h1>
-            
+
             <?php endif; ?>
                 <label class="" for="" >Quel est votre pays ?</label>
                 <form method="GET" action="pays.php">
                     <div class="s d-flex align-items-center">
                         <select  class="form-control " name="pays" >
                             <?php foreach ($pays as $list): ?>
-                                <option name="<?php $list['capital'] ?>" > <?= $list['capital'] ?> </option>
+                            <option name="<?php $list['capital'] ?>" > <?= $list['capital'] ?> </option>
                             <?php endforeach ?>
                         </select> 
                     </div> 
